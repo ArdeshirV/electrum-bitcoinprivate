@@ -1,0 +1,21 @@
+# If you want Electrum-bitcoinprivate to appear in a Linux app launcher ("start menu"), install this by doing:
+# sudo desktop-file-install electrum-bitcoinprivate.desktop
+
+[Desktop Entry]
+Comment=Lightweight bitcoinprivate Client
+Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\" electrum-bitcoinprivate %u"
+GenericName[en_US]=bitcoinprivate Wallet
+GenericName=bitcoinprivate Wallet
+Icon=electrum-bitcoinprivate.png
+Name[en_US]=Electrum-bitcoinprivate Wallet
+Name=Electrum-bitcoinprivate Wallet
+Categories=Finance;Network;
+StartupNotify=false
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/bitcoinprivate;
+Actions=Testnet;
+
+[Desktop Action Testnet]
+Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\" electrum-bitcoinprivate --testnet %u"
+Name=Testnet mode
