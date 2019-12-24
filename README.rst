@@ -1,4 +1,4 @@
-Electrum-bitcoinprivate - Lightweight bitcoinprivate client
+Electrum-bitcoinprivate - Lightweight Bitcoin Private client
 =====================================
 
 ::
