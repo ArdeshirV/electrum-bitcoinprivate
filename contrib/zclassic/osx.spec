@@ -42,12 +42,12 @@ hiddenimports += [
 ]
 
 datas = [
-    ('lib/servers.json', 'electrum_zclassic'),
-    ('lib/servers_testnet.json', 'electrum_zclassic'),
-    ('lib/servers_regtest.json', 'electrum_zclassic'),
-    ('lib/currencies.json', 'electrum_zclassic'),
-    ('lib/locale', 'electrum_zclassic/locale'),
-    ('lib/wordlist', 'electrum_zclassic/wordlist'),
+    ('lib/servers.json', 'electrum_bitcoinprivate'),
+    ('lib/servers_testnet.json', 'electrum_bitcoinprivate'),
+    ('lib/servers_regtest.json', 'electrum_bitcoinprivate'),
+    ('lib/currencies.json', 'electrum_bitcoinprivate'),
+    ('lib/locale', 'electrum_bitcoinprivate/locale'),
+    ('lib/wordlist', 'electrum_bitcoinprivate/wordlist'),
 ]
 datas += collect_data_files('trezorlib')
 datas += collect_data_files('btchip')
@@ -91,7 +91,7 @@ excludes += [
     'PyQt5.QtWinExtras',
 ]
 
-a = Analysis(['electrum-zclassic'],
+a = Analysis(['electrum-bitcoinprivate'],
              pathex=['plugins'],
              hiddenimports=hiddenimports,
              datas=datas,
@@ -105,14 +105,14 @@ for d in a.datas:
         a.datas.remove(d)
         break
 
-# Add TOC to electrum_zclassic, electrum_zclassic_gui, electrum_zclassic_plugins
+# Add TOC to electrum_bitcoinprivate, electrum_bitcoinprivate_gui, electrum_bitcoinprivate_plugins
 for p in sorted(a.pure):
     if p[0].startswith('lib') and p[2] == 'PYMODULE':
-        a.pure += [('electrum_zclassic%s' % p[0][3:] , p[1], p[2])]
+        a.pure += [('electrum_bitcoinprivate%s' % p[0][3:] , p[1], p[2])]
     if p[0].startswith('gui') and p[2] == 'PYMODULE':
-        a.pure += [('electrum_zclassic_gui%s' % p[0][3:] , p[1], p[2])]
+        a.pure += [('electrum_bitcoinprivate_gui%s' % p[0][3:] , p[1], p[2])]
     if p[0].startswith('plugins') and p[2] == 'PYMODULE':
-        a.pure += [('electrum_zclassic_plugins%s' % p[0][7:] , p[1], p[2])]
+        a.pure += [('electrum_bitcoinprivate_plugins%s' % p[0][7:] , p[1], p[2])]
 
 pyz = PYZ(a.pure)
 
@@ -123,8 +123,8 @@ exe = EXE(pyz,
           strip=False,
           upx=False,
           console=False,
-          icon='icons/electrum-zclassic.ico',
-          name=os.path.join('build/electrum-zclassic/electrum-zclassic', cmdline_name))
+          icon='icons/electrum-bitcoinprivate.ico',
+          name=os.path.join('build/electrum-bitcoinprivate/electrum-bitcoinprivate', cmdline_name))
 
 # trezorctl separate bin
 tctl_a = Analysis([os.path.join(PY36BINDIR, 'trezorctl')],
@@ -141,17 +141,17 @@ tctl_exe = EXE(tctl_pyz,
            strip=False,
            upx=False,
            console=True,
-           name=os.path.join('build/electrum-zclassic/electrum-zclassic', 'trezorctl.bin'))
+           name=os.path.join('build/electrum-bitcoinprivate/electrum-bitcoinprivate', 'trezorctl.bin'))
 
 coll = COLLECT(exe, tctl_exe,
                a.binaries,
                a.datas,
                strip=False,
                upx=False,
-               name=os.path.join('dist', 'electrum-zclassic'))
+               name=os.path.join('dist', 'electrum-bitcoinprivate'))
 
 app = BUNDLE(coll,
-             name=os.path.join('dist', 'Electrum-Zclassic.app'),
-             appname="Electrum-Zclassic",
-	         icon='electrum-zclassic.icns',
+             name=os.path.join('dist', 'Electrum-bitcoinprivate.app'),
+             appname="Electrum-bitcoinprivate",
+	         icon='electrum-bitcoinprivate.icns',
              version = 'ELECTRUM_VERSION')

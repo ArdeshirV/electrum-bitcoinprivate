@@ -1,4 +1,4 @@
-# Electrum - Lightweight ZClassic Client
+# Electrum - Lightweight bitcoinprivate Client
 # Copyright (c) 2012 Thomas Voegtlin
 #
 # Permission is hereby granted, free of charge, to any person

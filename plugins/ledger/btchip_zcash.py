@@ -6,7 +6,7 @@ from btchip.bitcoinTransaction import bitcoinInput, bitcoinOutput
 from btchip.bitcoinVarint import readVarint, writeVarint
 from btchip.btchipHelpers import parse_bip32_path, writeUint32BE
 
-from electrum_zclassic.transaction import (OVERWINTERED_VERSION_GROUP_ID,
+from electrum_bitcoinprivate.transaction import (OVERWINTERED_VERSION_GROUP_ID,
                                         SAPLING_VERSION_GROUP_ID)
 
 

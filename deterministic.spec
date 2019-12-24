@@ -38,12 +38,12 @@ hiddenimports += [
 ]
 
 datas = [
-    ('lib/servers.json', 'electrum_zclassic'),
-    ('lib/servers_testnet.json', 'electrum_zclassic'),
-    ('lib/servers_regtest.json', 'electrum_zclassic'),
-    ('lib/currencies.json', 'electrum_zclassic'),
-    ('lib/locale', 'electrum_zclassic/locale'),
-    ('lib/wordlist', 'electrum_zclassic/wordlist'),
+    ('lib/servers.json', 'electrum_bitcoinprivate'),
+    ('lib/servers_testnet.json', 'electrum_bitcoinprivate'),
+    ('lib/servers_regtest.json', 'electrum_bitcoinprivate'),
+    ('lib/currencies.json', 'electrum_bitcoinprivate'),
+    ('lib/locale', 'electrum_bitcoinprivate/locale'),
+    ('lib/wordlist', 'electrum_bitcoinprivate/wordlist'),
     ('C:\\zbarw', '.'),
 ]
 datas += collect_data_files('trezorlib')
@@ -88,7 +88,7 @@ excludes += [
     'PyQt5.QtWinExtras',
 ]
 
-a = Analysis(['electrum-zclassic'],
+a = Analysis(['electrum-bitcoinprivate'],
              pathex=['plugins'],
              hiddenimports=hiddenimports,
              datas=datas,
@@ -102,14 +102,14 @@ for d in a.datas:
         a.datas.remove(d)
         break
 
-# Add TOC to electrum_zclassic, electrum_zclassic_gui, electrum_zclassic_plugins
+# Add TOC to electrum_bitcoinprivate, electrum_bitcoinprivate_gui, electrum_bitcoinprivate_plugins
 for p in sorted(a.pure):
     if p[0].startswith('lib') and p[2] == 'PYMODULE':
-        a.pure += [('electrum_zclassic%s' % p[0][3:] , p[1], p[2])]
+        a.pure += [('electrum_bitcoinprivate%s' % p[0][3:] , p[1], p[2])]
     if p[0].startswith('gui') and p[2] == 'PYMODULE':
-        a.pure += [('electrum_zclassic_gui%s' % p[0][3:] , p[1], p[2])]
+        a.pure += [('electrum_bitcoinprivate_gui%s' % p[0][3:] , p[1], p[2])]
     if p[0].startswith('plugins') and p[2] == 'PYMODULE':
-        a.pure += [('electrum_zclassic_plugins%s' % p[0][7:] , p[1], p[2])]
+        a.pure += [('electrum_bitcoinprivate_plugins%s' % p[0][7:] , p[1], p[2])]
 
 pyz = PYZ(a.pure)
 
@@ -120,7 +120,7 @@ exe = EXE(pyz,
           strip=False,
           upx=False,
           console=False,
-          icon='icons/electrum-zclassic.ico',
+          icon='icons/electrum-bitcoinprivate.ico',
           name=os.path.join('build\\pyi.win32\\electrum', cmdline_name))
 
 # exe with console output
@@ -131,7 +131,7 @@ conexe = EXE(pyz,
           strip=False,
           upx=False,
           console=True,
-          icon='icons/electrum-zclassic.ico',
+          icon='icons/electrum-bitcoinprivate.ico',
           name=os.path.join('build\\pyi.win32\\electrum',
                             'console-%s' % cmdline_name))
 
@@ -157,4 +157,4 @@ coll = COLLECT(exe, conexe, tctl_exe,
                a.datas,
                strip=False,
                upx=False,
-               name=os.path.join('dist', 'electrum-zclassic'))
+               name=os.path.join('dist', 'electrum-bitcoinprivate'))

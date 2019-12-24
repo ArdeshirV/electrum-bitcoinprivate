@@ -1,7 +1,7 @@
-# Configuration file for the Electrum-Zclassic client
+# Configuration file for the Electrum-bitcoinprivate client
 # Settings defined here are shared across wallets
 #
-# copy this file to /etc/electrum-zclassic.conf if you want read-only settings
+# copy this file to /etc/electrum-bitcoinprivate.conf if you want read-only settings
 
 [client]
 server = electrum.novit.ro:50001:t

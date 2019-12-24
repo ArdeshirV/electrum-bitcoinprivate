@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Electrum - lightweight ZClassic client
+# Electrum - lightweight bitcoinprivate client
 # Copyright (C) 2011 thomasv@gitorious
 #
 # Permission is hereby granted, free of charge, to any person
@@ -357,7 +357,7 @@ def base_encode(v, base):
         result.append(chars[mod])
         long_value = div
     result.append(chars[long_value])
-    # ZClassic does a little leading-zero-compression:
+    # bitcoinprivate does a little leading-zero-compression:
     # leading 0-bytes in the input become leading-1s
     nPad = 0
     for c in v:
@@ -550,7 +550,7 @@ from ecdsa.util import string_to_number, number_to_string
 
 def msg_magic(message):
     length = bfh(var_int(len(message)))
-    return b"\x18Zclassic Signed Message:\n" + length + message
+    return b"\x18bitcoinprivate Signed Message:\n" + length + message
 
 
 def verify_message(address, sig, message):
@@ -905,7 +905,7 @@ def xpub_from_xprv(xprv):
 
 
 def bip32_root(seed, xtype):
-    I = hmac.new(b"ZClassic seed", seed, hashlib.sha512).digest()
+    I = hmac.new(b"bitcoinprivate seed", seed, hashlib.sha512).digest()
     master_k = I[0:32]
     master_c = I[32:]
     K, cK = get_pubkeys_from_secret(master_k)

@@ -1,4 +1,4 @@
-Electrum-Zclassic - Lightweight Zclassic client
+Electrum-bitcoinprivate - Lightweight bitcoinprivate client
 =====================================
 
 ::
@@ -6,11 +6,11 @@ Electrum-Zclassic - Lightweight Zclassic client
   Licence: MIT Licence
   Author: Thomas Voegtlin
   Language: Python
-  Homepage: https://github.com/ZclassicCommunity/electrum-zcl
+  Homepage: https://github.com/BTCPrivate/electrum-bitcoinprivate
 
 
-.. image:: https://travis-ci.org/ZclassicCommunity/electrum-zcl.svg?branch=master
-    :target: https://travis-ci.org/ZclassicCommunity/electrum-zcl
+.. image:: https://travis-ci.org/BTCPrivate/electrum-bitcoinprivate.svg?branch=master
+    :target: https://travis-ci.org/BTCPrivate/electrum-bitcoinprivate
     :alt: Build Status
 
 
@@ -20,30 +20,30 @@ Electrum-Zclassic - Lightweight Zclassic client
 Getting started
 ===============
 
-Electrum-Zclassic is a pure python application. If you want to use the
+Electrum-bitcoinprivate is a pure python application. If you want to use the
 Qt interface, install the Qt dependencies::
 
     sudo apt-get install python3-pyqt5
 
 If you downloaded the official package (tar.gz), you can run
-Electrum-Zclassic from its root directory, without installing it on your
+Electrum-bitcoinprivate from its root directory, without installing it on your
 system; all the python dependencies are included in the 'packages'
-directory. To run Electrum-Zclassic from its root directory, just do::
+directory. To run Electrum-bitcoinprivate from its root directory, just do::
 
-    ./electrum-zclassic
+    ./electrum-bitcoinprivate
 
-You can also install Electrum-Zclassic on your system, by running this command::
+You can also install Electrum-bitcoinprivate on your system, by running this command::
 
     sudo apt-get install python3-setuptools
     pip3 install .[full]
 
 This will download and install the Python dependencies used by
-Electrum-Zclassic, instead of using the 'packages' directory.
+Electrum-bitcoinprivate, instead of using the 'packages' directory.
 The 'full' extra contains some optional dependencies that we think
 are often useful but they are not strictly needed.
 
 If you cloned the git repository, you need to compile extra files
-before you can run Electrum-Zclassic. Read the next section, "Development
+before you can run Electrum-bitcoinprivate. Read the next section, "Development
 Version".
 
 
@@ -53,8 +53,8 @@ Development version
 
 Check out the code from GitHub::
 
-    git clone git://github.com/ZclassicCommunity/electrum-zclassic.git
-    cd electrum-zclassic
+    git clone git://github.com/BTCPrivate/electrum-bitcoinprivate.git
+    cd electrum-bitcoinprivate
 
 Run install (this should install dependencies)::
 
@@ -86,7 +86,7 @@ To create binaries, create the 'packages' directory::
 
     ./contrib/make_packages
 
-This directory contains the python dependencies used by Electrum-Zclassic.
+This directory contains the python dependencies used by Electrum-bitcoinprivate.
 
 Android
 -------

@@ -18,7 +18,7 @@ with open('contrib/requirements/requirements-hw.txt') as f:
 version = imp.load_source('version', 'lib/version.py')
 
 if sys.version_info[:3] < (3, 4, 0):
-    sys.exit("Error: Electrum-Zclassic requires Python version >= 3.4.0...")
+    sys.exit("Error: Electrum-bitcoinprivate requires Python version >= 3.4.0...")
 
 data_files = []
 
@@ -36,40 +36,40 @@ if platform.system() in ['Linux', 'FreeBSD', 'DragonFly']:
         else:
             usr_share = os.path.expanduser('~/.local/share')
     data_files += [
-        (os.path.join(usr_share, 'applications/'), ['electrum-zclassic.desktop']),
-        (os.path.join(usr_share, icons_dirname), ['icons/electrum-zclassic.png'])
+        (os.path.join(usr_share, 'applications/'), ['electrum-bitcoinprivate.desktop']),
+        (os.path.join(usr_share, icons_dirname), ['icons/electrum-bitcoinprivate.png'])
     ]
 
 setup(
-    name="Electrum-Zclassic",
+    name="Electrum-bitcoinprivate",
     version=version.ELECTRUM_VERSION,
     install_requires=requirements,
     extras_require={
         'full': requirements_hw + ['pycryptodomex'],
     },
     packages=[
-        'electrum_zclassic',
-        'electrum_zclassic_gui',
-        'electrum_zclassic_gui.qt',
-        'electrum_zclassic_plugins',
-        'electrum_zclassic_plugins.audio_modem',
-        'electrum_zclassic_plugins.cosigner_pool',
-        'electrum_zclassic_plugins.email_requests',
-        'electrum_zclassic_plugins.hw_wallet',
-        'electrum_zclassic_plugins.keepkey',
-        'electrum_zclassic_plugins.labels',
-        'electrum_zclassic_plugins.ledger',
-        'electrum_zclassic_plugins.trezor',
-        'electrum_zclassic_plugins.digitalbitbox',
-        'electrum_zclassic_plugins.virtualkeyboard',
+        'electrum_bitcoinprivate',
+        'electrum_bitcoinprivate_gui',
+        'electrum_bitcoinprivate_gui.qt',
+        'electrum_bitcoinprivate_plugins',
+        'electrum_bitcoinprivate_plugins.audio_modem',
+        'electrum_bitcoinprivate_plugins.cosigner_pool',
+        'electrum_bitcoinprivate_plugins.email_requests',
+        'electrum_bitcoinprivate_plugins.hw_wallet',
+        'electrum_bitcoinprivate_plugins.keepkey',
+        'electrum_bitcoinprivate_plugins.labels',
+        'electrum_bitcoinprivate_plugins.ledger',
+        'electrum_bitcoinprivate_plugins.trezor',
+        'electrum_bitcoinprivate_plugins.digitalbitbox',
+        'electrum_bitcoinprivate_plugins.virtualkeyboard',
     ],
     package_dir={
-        'electrum_zclassic': 'lib',
-        'electrum_zclassic_gui': 'gui',
-        'electrum_zclassic_plugins': 'plugins',
+        'electrum_bitcoinprivate': 'lib',
+        'electrum_bitcoinprivate_gui': 'gui',
+        'electrum_bitcoinprivate_plugins': 'plugins',
     },
     package_data={
-        'electrum_zclassic': [
+        'electrum_bitcoinprivate': [
             'servers.json',
             'servers_testnet.json',
             'servers_regtest.json',
@@ -78,12 +78,12 @@ setup(
             'locale/*/LC_MESSAGES/electrum.mo',
         ]
     },
-    scripts=['electrum-zclassic'],
+    scripts=['electrum-bitcoinprivate'],
     data_files=data_files,
-    description="Lightweight Zclassic Wallet",
+    description="Lightweight bitcoinprivate Wallet",
     author="Thomas Voegtlin",
     author_email="thomasv@electrum.org",
     license="MIT License",
-    url="https://github.com/ZclassicCommunity/electrum-zclassic",
-    long_description="""Lightweight Zclassic Wallet"""
+    url="https://github.com/BTCPrivate/electrum-bitcoinprivate",
+    long_description="""Lightweight bitcoinprivate Wallet"""
 )

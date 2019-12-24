@@ -1,4 +1,4 @@
-# Electrum - lightweight ZClassic client
+# Electrum - lightweight bitcoinprivate client
 # Copyright (C) 2011 Thomas Voegtlin
 #
 # Permission is hereby granted, free of charge, to any person
@@ -40,7 +40,7 @@ def inv_dict(d):
     return {v: k for k, v in d.items()}
 
 
-base_units = {'ZCL':8, 'mZCL':5, 'uZCL':2}
+base_units = {'BTCP':8, 'mBTCP':5, 'uBTCP':2}
 
 def normalize_version(v):
     return [int(x) for x in re.sub(r'(\.0+)*$','', v).split(".")]
@@ -313,7 +313,7 @@ def android_data_dir():
     return PythonActivity.mActivity.getFilesDir().getPath() + '/data'
 
 def android_headers_dir():
-    d = android_ext_dir() + '/cash.z.electrum.electrum_zclassic'
+    d = android_ext_dir() + '/cash.z.electrum.electrum_bitcoinprivate'
     if not os.path.exists(d):
         os.mkdir(d)
     return d
@@ -322,7 +322,7 @@ def android_check_data_dir():
     """ if needed, move old directory to sandbox """
     ext_dir = android_ext_dir()
     data_dir = android_data_dir()
-    old_electrum_dir = ext_dir + '/electrum-zclassic'
+    old_electrum_dir = ext_dir + '/electrum-bitcoinprivate'
     if not os.path.exists(data_dir) and os.path.exists(old_electrum_dir):
         import shutil
         new_headers_path = android_headers_dir() + '/blockchain_headers'
@@ -403,11 +403,11 @@ def user_dir():
     if 'ANDROID_DATA' in os.environ:
         return android_check_data_dir()
     elif os.name == 'posix':
-        return os.path.join(os.environ["HOME"], ".electrum-zclassic")
+        return os.path.join(os.environ["HOME"], ".electrum-bitcoinprivate")
     elif "APPDATA" in os.environ:
-        return os.path.join(os.environ["APPDATA"], "Electrum-Zclassic")
+        return os.path.join(os.environ["APPDATA"], "Electrum-bitcoinprivate")
     elif "LOCALAPPDATA" in os.environ:
-        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-Zclassic")
+        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-bitcoinprivate")
     else:
         #raise Exception("No home directory found in environment variables.")
         return
@@ -506,7 +506,7 @@ def time_difference(distance_in_time, include_seconds):
         return "over %d years" % (round(distance_in_minutes / 525600))
 
 mainnet_block_explorers = {
-    'zeltrez.io': ('https://explorer.zcl.zeltrez.io/',
+    'zeltrez.io': ('https://explorer.btcprivate.org/',
                         {'tx': 'tx/', 'addr': 'address/'})
 }
 
@@ -522,7 +522,7 @@ def block_explorer_info():
     return testnet_block_explorers if constants.net.TESTNET else mainnet_block_explorers
 
 def block_explorer(config):
-    return config.get('block_explorer', 'zeltrez.io')
+    return config.get('block_explorer', 'btcprivate.org')
 
 def block_explorer_tuple(config):
     return block_explorer_info().get(block_explorer(config))
@@ -547,12 +547,12 @@ def parse_URI(uri, on_pr=None):
 
     if ':' not in uri:
         if not bitcoin.is_address(uri):
-            raise Exception("Not a Zclassic address")
+            raise Exception("Not a bitcoinprivate address")
         return {'address': uri}
 
     u = urllib.parse.urlparse(uri)
-    if u.scheme != 'zclassic':
-        raise Exception("Not a Zclassic URI")
+    if u.scheme != 'bitcoinprivate':
+        raise Exception("Not a bitcoinprivate URI")
     address = u.path
 
     # python for android fails to parse query
@@ -569,7 +569,7 @@ def parse_URI(uri, on_pr=None):
     out = {k: v[0] for k, v in pq.items()}
     if address:
         if not bitcoin.is_address(address):
-            raise Exception("Invalid Zclassic address:" + address)
+            raise Exception("Invalid bitcoinprivate address:" + address)
         out['address'] = address
     if 'amount' in out:
         am = out['amount']
@@ -619,7 +619,7 @@ def create_URI(addr, amount, message):
         query.append('amount=%s'%format_satoshis_plain(amount))
     if message:
         query.append('message=%s'%urllib.parse.quote(message))
-    p = urllib.parse.ParseResult(scheme='zclassic', netloc='', path=addr, params='', query='&'.join(query), fragment='')
+    p = urllib.parse.ParseResult(scheme='bitcoinprivate', netloc='', path=addr, params='', query='&'.join(query), fragment='')
     return urllib.parse.urlunparse(p)
 
 

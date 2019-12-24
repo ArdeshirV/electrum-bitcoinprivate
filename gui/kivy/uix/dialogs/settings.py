@@ -3,21 +3,21 @@ from kivy.factory import Factory
 from kivy.properties import ObjectProperty
 from kivy.lang import Builder
 
-from electrum_zclassic.util import base_units
-from electrum_zclassic.i18n import languages
-from electrum_zclassic_gui.kivy.i18n import _
-from electrum_zclassic.plugins import run_hook
-from electrum_zclassic import coinchooser
+from electrum_bitcoinprivate.util import base_units
+from electrum_bitcoinprivate.i18n import languages
+from electrum_bitcoinprivate_gui.kivy.i18n import _
+from electrum_bitcoinprivate.plugins import run_hook
+from electrum_bitcoinprivate import coinchooser
 
 from .choice_dialog import ChoiceDialog
 
 Builder.load_string('''
 #:import partial functools.partial
-#:import _ electrum_zclassic_gui.kivy.i18n._
+#:import _ electrum_bitcoinprivate_gui.kivy.i18n._
 
 <SettingsDialog@Popup>
     id: settings
-    title: _('Electrum-Zclassic Settings')
+    title: _('Electrum-bitcoinprivate Settings')
     disable_pin: False
     use_encryption: False
     BoxLayout:
@@ -44,7 +44,7 @@ Builder.load_string('''
                 SettingsItem:
                     bu: app.base_unit
                     title: _('Denomination') + ': ' + self.bu
-                    description: _("Base unit for Zclassic amounts.")
+                    description: _("Base unit for bitcoinprivate amounts.")
                     action: partial(root.unit_dialog, self)
                 CardSeparator
                 SettingsItem:

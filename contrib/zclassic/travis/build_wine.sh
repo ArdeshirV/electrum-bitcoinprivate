@@ -1,19 +1,19 @@
 #!/bin/bash
 
-source ./contrib/zclassic/travis/electrum_zclassic_version_env.sh;
-echo wine build version is $ELECTRUM_ZCL_VERSION
+source ./contrib/bitcoinprivate/travis/electrum_bitcoinprivate_version_env.sh;
+echo wine build version is $ELECTRUM_BTCP_VERSION
 
 mv /opt/zbarw $WINEPREFIX/drive_c/
-cd $WINEPREFIX/drive_c/electrum-zclassic
+cd $WINEPREFIX/drive_c/electrum-bitcoinprivate
 
 rm -rf build
-rm -rf dist/electrum-zclassic
+rm -rf dist/electrum-bitcoinprivate
 
-cp contrib/zclassic/deterministic.spec .
-cp contrib/zclassic/pyi_runtimehook.py .
-cp contrib/zclassic/pyi_tctl_runtimehook.py .
+cp contrib/bitcoinprivate/deterministic.spec .
+cp contrib/bitcoinprivate/pyi_runtimehook.py .
+cp contrib/bitcoinprivate/pyi_tctl_runtimehook.py .
 
-wine pip install -r contrib/zclassic/requirements.txt
+wine pip install -r contrib/bitcoinprivate/requirements.txt
 wine pip install --upgrade pip==18.1
 wine pip install PyInstaller==3.4
 
@@ -30,7 +30,7 @@ mkdir $WINEPREFIX/drive_c/Qt
 ln -s $PYHOME/Lib/site-packages/PyQt5/ $WINEPREFIX/drive_c/Qt/5.5.1
 
 wine pyinstaller -y \
-    --name electrum-zclassic-$ELECTRUM_ZCL_VERSION.exe \
+    --name electrum-bitcoinprivate-$ELECTRUM_BTCP_VERSION.exe \
     deterministic.spec
 
 if [[ $WINEARCH == win32 ]]; then
@@ -40,6 +40,6 @@ else
 fi
 
 wine "$NSIS_EXE" /NOCD -V3 \
-    /DPRODUCT_VERSION=$ELECTRUM_ZCL_VERSION \
+    /DPRODUCT_VERSION=$ELECTRUM_BTCP_VERSION \
     /DWINEARCH=$WINEARCH \
-    contrib/zclassic/electrum-zclassic.nsi
+    contrib/bitcoinprivate/electrum-bitcoinprivate.nsi

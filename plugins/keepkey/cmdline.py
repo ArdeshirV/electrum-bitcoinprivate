@@ -1,4 +1,4 @@
-from electrum_zclassic.plugins import hook
+from electrum_bitcoinprivate.plugins import hook
 from .keepkey import KeepKeyPlugin
 from ..hw_wallet import CmdLineHandler
 

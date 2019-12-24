@@ -1,4 +1,4 @@
-from electrum_zclassic.util import print_msg, print_error, raw_input
+from electrum_bitcoinprivate.util import print_msg, print_error, raw_input
 
 class CmdLineHandler:
 

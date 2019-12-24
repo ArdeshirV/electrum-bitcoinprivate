@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: electrum-zclassic
-Source: https://github.com/ZclassicCommunity/electrum-zclassic/
+Upstream-Name: electrum-bitcoinprivate
+Source: https://github.com/BTCPrivate/electrum-bitcoinprivate/
 
 Files: *
 Copyright: Electrum Team

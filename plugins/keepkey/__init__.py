@@ -1,4 +1,4 @@
-from electrum_zclassic.i18n import _
+from electrum_bitcoinprivate.i18n import _
 
 fullname = 'KeepKey'
 description = _('Provides support for KeepKey hardware wallet')

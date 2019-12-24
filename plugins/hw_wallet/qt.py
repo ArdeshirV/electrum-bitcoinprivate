@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- mode: python -*-
 #
-# Electrum - lightweight ZClassic client
+# Electrum - lightweight bitcoinprivate client
 # Copyright (C) 2016  The Electrum developers
 #
 # Permission is hereby granted, free of charge, to any person
@@ -27,11 +27,11 @@
 import threading
 
 from PyQt5.Qt import QVBoxLayout, QLabel
-from electrum_zclassic_gui.qt.password_dialog import PasswordDialog, PW_PASSPHRASE
-from electrum_zclassic_gui.qt.util import *
+from electrum_bitcoinprivate_gui.qt.password_dialog import PasswordDialog, PW_PASSPHRASE
+from electrum_bitcoinprivate_gui.qt.util import *
 
-from electrum_zclassic.i18n import _
-from electrum_zclassic.util import PrintError
+from electrum_bitcoinprivate.i18n import _
+from electrum_bitcoinprivate.util import PrintError
 
 # The trickiest thing about this handler was getting windows properly
 # parented on macOS.
@@ -172,9 +172,9 @@ class QtHandlerBase(QObject, PrintError):
 
 
 
-from electrum_zclassic.plugins import hook
-from electrum_zclassic.util import UserCancelled
-from electrum_zclassic_gui.qt.main_window import StatusBarButton
+from electrum_bitcoinprivate.plugins import hook
+from electrum_bitcoinprivate.util import UserCancelled
+from electrum_bitcoinprivate_gui.qt.main_window import StatusBarButton
 
 class QtPluginBase(object):
 

@@ -6,15 +6,15 @@ if [[ -z $TRAVIS_TAG ]]; then
   exit 1
 fi
 
-BUILD_REPO_URL=https://github.com/ZclassicCommunity/electrum-zclassic
+BUILD_REPO_URL=https://github.com/BTCPrivate/electrum-bitcoinprivate
 
 cd build
 
-git clone --branch $TRAVIS_TAG $BUILD_REPO_URL electrum-zclassic
+git clone --branch $TRAVIS_TAG $BUILD_REPO_URL electrum-bitcoinprivate
 
 docker run --rm \
     -v $(pwd):/opt \
-    -w /opt/electrum-zclassic \
+    -w /opt/electrum-bitcoinprivate \
     -t zebralucky/electrum-dash-winebuild:Linux /opt/build_linux.sh
 
 sudo find . -name '*.po' -delete
@@ -32,8 +32,8 @@ docker run --rm \
     -e WINEPREFIX=$WINEPREFIX \
     -e PYHOME=$PYHOME \
     -v $(pwd):/opt \
-    -v $(pwd)/electrum-zclassic/:$WINEPREFIX/drive_c/electrum-zclassic \
-    -w /opt/electrum-zclassic \
+    -v $(pwd)/electrum-bitcoinprivate/:$WINEPREFIX/drive_c/electrum-bitcoinprivate \
+    -w /opt/electrum-bitcoinprivate \
     -t zebralucky/electrum-dash-winebuild:WinePy36 /opt/build_wine.sh
 
 export WINEARCH=win64
@@ -48,6 +48,6 @@ docker run --rm \
     -e WINEPREFIX=$WINEPREFIX \
     -e PYHOME=$PYHOME \
     -v $(pwd):/opt \
-    -v $(pwd)/electrum-zclassic/:$WINEPREFIX/drive_c/electrum-zclassic \
-    -w /opt/electrum-zclassic \
+    -v $(pwd)/electrum-bitcoinprivate/:$WINEPREFIX/drive_c/electrum-bitcoinprivate \
+    -w /opt/electrum-bitcoinprivate \
     -t zebralucky/electrum-dash-winebuild:WinePy36 /opt/build_wine.sh

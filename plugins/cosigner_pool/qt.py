@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Electrum - lightweight ZClassic client
+# Electrum - lightweight bitcoinprivate client
 # Copyright (C) 2014 Thomas Voegtlin
 #
 # Permission is hereby granted, free of charge, to any person
@@ -30,14 +30,14 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import QPushButton
 
-from electrum_zclassic import bitcoin, util
-from electrum_zclassic import transaction
-from electrum_zclassic.plugins import BasePlugin, hook
-from electrum_zclassic.i18n import _
-from electrum_zclassic.wallet import Multisig_Wallet
-from electrum_zclassic.util import bh2u, bfh
+from electrum_bitcoinprivate import bitcoin, util
+from electrum_bitcoinprivate import transaction
+from electrum_bitcoinprivate.plugins import BasePlugin, hook
+from electrum_bitcoinprivate.i18n import _
+from electrum_bitcoinprivate.wallet import Multisig_Wallet
+from electrum_bitcoinprivate.util import bh2u, bfh
 
-from electrum_zclassic_gui.qt.transaction_dialog import show_transaction
+from electrum_bitcoinprivate_gui.qt.transaction_dialog import show_transaction
 
 import sys
 import traceback
@@ -160,7 +160,7 @@ class Plugin(BasePlugin):
             d.cosigner_send_button.hide()
 
     def cosigner_can_sign(self, tx, cosigner_xpub):
-        from electrum_zclassic.keystore import is_xpubkey, parse_xpubkey
+        from electrum_bitcoinprivate.keystore import is_xpubkey, parse_xpubkey
         xpub_set = set([])
         for txin in tx.inputs():
             for x_pubkey in txin['x_pubkeys']:

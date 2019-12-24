@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Electrum - lightweight ZClassic client
+# Electrum - lightweight bitcoinprivate client
 # Copyright (C) 2015 Thomas Voegtlin
 #
 # Permission is hereby granted, free of charge, to any person
@@ -48,9 +48,9 @@ class Plugins(DaemonThread):
         DaemonThread.__init__(self)
         if is_local:
             find = imp.find_module('plugins')
-            plugins = imp.load_module('electrum_zclassic_plugins', *find)
+            plugins = imp.load_module('electrum_bitcoinprivate_plugins', *find)
         else:
-            plugins = __import__('electrum_zclassic_plugins')
+            plugins = __import__('electrum_bitcoinprivate_plugins')
         self.pkgpath = os.path.dirname(plugins.__file__)
         self.config = config
         self.hw_wallets = {}
@@ -95,7 +95,7 @@ class Plugins(DaemonThread):
     def load_plugin(self, name):
         if name in self.plugins:
             return self.plugins[name]
-        full_name = 'electrum_zclassic_plugins.' + name + '.' + self.gui_name
+        full_name = 'electrum_bitcoinprivate_plugins.' + name + '.' + self.gui_name
         loader = pkgutil.find_loader(full_name)
         if not loader:
             raise RuntimeError("%s implementation for %s plugin not found"
@@ -452,8 +452,8 @@ class DeviceMgr(ThreadJob, PrintError):
         # The user input has wrong PIN or passphrase, or cancelled input,
         # or it is not pairable
         raise DeviceUnpairableError(
-            _('Electrum-Zclassic cannot pair with your {}.\n\n'
-              'Before you request Zclassic coins to be sent to addresses in this '
+            _('Electrum-bitcoinprivate cannot pair with your {}.\n\n'
+              'Before you request bitcoinprivate coins to be sent to addresses in this '
               'wallet, ensure you can pair with your device, or that you have '
               'its seed (and passphrase, if any).  Otherwise all coins you '
               'receive will be unspendable.').format(plugin.device))

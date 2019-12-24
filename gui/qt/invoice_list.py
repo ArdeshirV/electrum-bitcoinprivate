@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Electrum - lightweight ZClassic client
+# Electrum - lightweight bitcoinprivate client
 # Copyright (C) 2015 Thomas Voegtlin
 #
 # Permission is hereby granted, free of charge, to any person
@@ -23,8 +23,8 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from electrum_zclassic.i18n import _
-from electrum_zclassic.util import format_time
+from electrum_bitcoinprivate.i18n import _
+from electrum_bitcoinprivate.util import format_time
 
 from .util import *
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Electrum - lightweight ZClassic client
+# Electrum - lightweight bitcoinprivate client
 # Copyright (C) 2015 Thomas Voegtlin
 #
 # Permission is hereby granted, free of charge, to any person
@@ -24,10 +24,10 @@
 # SOFTWARE.
 import webbrowser
 
-from electrum_zclassic.i18n import _
-from electrum_zclassic.util import block_explorer_URL
-from electrum_zclassic.plugins import run_hook
-from electrum_zclassic.bitcoin import is_address
+from electrum_bitcoinprivate.i18n import _
+from electrum_bitcoinprivate.util import block_explorer_URL
+from electrum_bitcoinprivate.plugins import run_hook
+from electrum_bitcoinprivate.bitcoin import is_address
 
 from .util import *
 
@@ -138,7 +138,7 @@ class AddressList(MyTreeWidget):
                 self.setCurrentItem(address_item)
 
     def create_menu(self, position):
-        from electrum_zclassic.wallet import Multisig_Wallet
+        from electrum_bitcoinprivate.wallet import Multisig_Wallet
         is_multisig = isinstance(self.wallet, Multisig_Wallet)
         can_delete = self.wallet.can_delete_address()
         selected = self.selectedItems()

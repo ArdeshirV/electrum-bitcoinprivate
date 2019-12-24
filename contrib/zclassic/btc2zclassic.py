@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Search and replaces BTC addresses and private keys in WIF to Zclassic variant"""
+"""Search and replaces BTC addresses and private keys in WIF to bitcoinprivate variant"""
 
 import click
 import imp

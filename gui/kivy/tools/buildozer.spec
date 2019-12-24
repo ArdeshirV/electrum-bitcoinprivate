@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = Electrum-Zclassic
+title = Electrum-bitcoinprivate
 
 # (str) Package name
-package.name = Electrum-Zclassic
+package.name = Electrum-bitcoinprivate
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = cash.z.electrum

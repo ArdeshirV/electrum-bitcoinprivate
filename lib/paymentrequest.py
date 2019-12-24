@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Electrum - lightweight ZClassic client
+# Electrum - lightweight bitcoinprivate client
 # Copyright (C) 2014 Thomas Voegtlin
 #
 # Permission is hereby granted, free of charge, to any person
@@ -47,8 +47,8 @@ from . import rsakey
 
 from .bitcoin import TYPE_ADDRESS
 
-REQUEST_HEADERS = {'Accept': 'application/zclassic-paymentrequest', 'User-Agent': 'Electrum-Zclassic'}
-ACK_HEADERS = {'Content-Type':'application/zclassic-payment','Accept':'application/zclassic-paymentack','User-Agent':'Electrum-Zclassic'}
+REQUEST_HEADERS = {'Accept': 'application/bitcoinprivate-paymentrequest', 'User-Agent': 'Electrum-bitcoinprivate'}
+ACK_HEADERS = {'Content-Type':'application/bitcoinprivate-payment','Accept':'application/bitcoinprivate-paymentack','User-Agent':'Electrum-bitcoinprivate'}
 
 ca_path = requests.certs.where()
 ca_list = None
@@ -76,9 +76,9 @@ def get_payment_request(url):
         try:
             response = requests.request('GET', url, headers=REQUEST_HEADERS)
             response.raise_for_status()
-            # Guard against `zclassic:`-URIs with invalid payment request URLs
+            # Guard against `bitcoinprivate:`-URIs with invalid payment request URLs
             if "Content-Type" not in response.headers \
-            or response.headers["Content-Type"] != "application/zclassic-paymentrequest":
+            or response.headers["Content-Type"] != "application/bitcoinprivate-paymentrequest":
                 data = None
                 error = "payment URL not pointing to a payment request handling server"
             else:
@@ -267,7 +267,7 @@ class PaymentRequest:
         paymnt.transactions.append(bfh(raw_tx))
         ref_out = paymnt.refund_to.add()
         ref_out.script = util.bfh(transaction.Transaction.pay_script(TYPE_ADDRESS, refund_addr))
-        paymnt.memo = "Paid using Electrum-Zclassic"
+        paymnt.memo = "Paid using Electrum-bitcoinprivate"
         pm = paymnt.SerializeToString()
         payurl = urllib.parse.urlparse(pay_det.payment_url)
         try:

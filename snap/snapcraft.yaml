@@ -1,8 +1,8 @@
 name: electrum
 version: master
-summary: ZClassic thin client
+summary: bitcoinprivate thin client
 description: |
-  Lightweight ZClassic client
+  Lightweight bitcoinprivate client
 
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: strict

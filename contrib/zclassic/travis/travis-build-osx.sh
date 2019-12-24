@@ -6,18 +6,18 @@ if [[ -z $TRAVIS_TAG ]]; then
   exit 1
 fi
 
-BUILD_REPO_URL=https://github.com/ZclassicCommunity/electrum-zclassic
+BUILD_REPO_URL=https://github.com/BTCPrivate/electrum-bitcoinprivate
 
 cd build
 
-git clone --branch $TRAVIS_TAG $BUILD_REPO_URL electrum-zclassic
+git clone --branch $TRAVIS_TAG $BUILD_REPO_URL electrum-bitcoinprivate
 
-cd electrum-zclassic
+cd electrum-bitcoinprivate
 
 export PY36BINDIR=/Library/Frameworks/Python.framework/Versions/3.6/bin/
 export PATH=$PATH:$PY36BINDIR
-source ./contrib/zclassic/travis/electrum_zclassic_version_env.sh;
-echo wine build version is $ELECTRUM_ZCL_VERSION
+source ./contrib/bitcoinprivate/travis/electrum_bitcoinprivate_version_env.sh;
+echo wine build version is $ELECTRUM_BTCP_VERSION
 
 sudo pip3 install --upgrade pip
 sudo pip3 install -r contrib/deterministic-build/requirements.txt
@@ -34,15 +34,15 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 find . -name '*.po' -delete
 find . -name '*.pot' -delete
 
-cp contrib/zclassic/osx.spec .
-cp contrib/zclassic/pyi_runtimehook.py .
-cp contrib/zclassic/pyi_tctl_runtimehook.py .
+cp contrib/bitcoinprivate/osx.spec .
+cp contrib/bitcoinprivate/pyi_runtimehook.py .
+cp contrib/bitcoinprivate/pyi_tctl_runtimehook.py .
 
 pyinstaller \
     -y \
-    --name electrum-zclassic-$ELECTRUM_ZCL_VERSION.bin \
+    --name electrum-bitcoinprivate-$ELECTRUM_BTCP_VERSION.bin \
     osx.spec
 
-sudo hdiutil create -fs HFS+ -volname "Electrum-Zclassic" \
-    -srcfolder dist/Electrum-Zclassic.app \
-    dist/electrum-zclassic-$ELECTRUM_ZCL_VERSION-macosx.dmg
+sudo hdiutil create -fs HFS+ -volname "Electrum-bitcoinprivate" \
+    -srcfolder dist/Electrum-bitcoinprivate.app \
+    dist/electrum-bitcoinprivate-$ELECTRUM_BTCP_VERSION-macosx.dmg

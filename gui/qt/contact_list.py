@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Electrum - lightweight ZClassic client
+# Electrum - lightweight bitcoinprivate client
 # Copyright (C) 2015 Thomas Voegtlin
 #
 # Permission is hereby granted, free of charge, to any person
@@ -24,10 +24,10 @@
 # SOFTWARE.
 import webbrowser
 
-from electrum_zclassic.i18n import _
-from electrum_zclassic.bitcoin import is_address
-from electrum_zclassic.util import block_explorer_URL
-from electrum_zclassic.plugins import run_hook
+from electrum_bitcoinprivate.i18n import _
+from electrum_bitcoinprivate.bitcoin import is_address
+from electrum_bitcoinprivate.util import block_explorer_URL
+from electrum_bitcoinprivate.plugins import run_hook
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import (

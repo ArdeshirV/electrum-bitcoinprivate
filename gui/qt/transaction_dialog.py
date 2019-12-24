@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Electrum - lightweight ZClassic client
+# Electrum - lightweight bitcoinprivate client
 # Copyright (C) 2012 thomasv@gitorious
 #
 # Permission is hereby granted, free of charge, to any person
@@ -31,14 +31,14 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from electrum_zclassic.bitcoin import base_encode
-from electrum_zclassic.i18n import _
-from electrum_zclassic.plugins import run_hook
-from electrum_zclassic import simple_config
+from electrum_bitcoinprivate.bitcoin import base_encode
+from electrum_bitcoinprivate.i18n import _
+from electrum_bitcoinprivate.plugins import run_hook
+from electrum_bitcoinprivate import simple_config
 
-from electrum_zclassic.util import bfh
-from electrum_zclassic.wallet import AddTransactionException
-from electrum_zclassic.transaction import SerializationError
+from electrum_bitcoinprivate.util import bfh
+from electrum_bitcoinprivate.wallet import AddTransactionException
+from electrum_bitcoinprivate.transaction import SerializationError
 
 from .util import *
 
@@ -50,7 +50,7 @@ def show_transaction(tx, parent, desc=None, prompt_if_unsaved=False):
         d = TxDialog(tx, parent, desc, prompt_if_unsaved)
     except SerializationError as e:
         traceback.print_exc(file=sys.stderr)
-        parent.show_critical(_("Electrum-Zclassic was unable to deserialize the transaction:") + "\n" + str(e))
+        parent.show_critical(_("Electrum-bitcoinprivate was unable to deserialize the transaction:") + "\n" + str(e))
     else:
         dialogs.append(d)
         d.show()

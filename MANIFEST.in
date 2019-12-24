@@ -1,9 +1,9 @@
 include LICENCE RELEASE-NOTES AUTHORS
 include README.rst
-include electrum-zclassic.conf.sample
-include electrum-zclassic.desktop
+include electrum-bitcoinprivate.conf.sample
+include electrum-bitcoinprivate.desktop
 include *.py
-include electrum-zclassic
+include electrum-bitcoinprivate
 include contrib/requirements/requirements.txt
 include contrib/requirements/requirements-hw.txt
 recursive-include lib *.py

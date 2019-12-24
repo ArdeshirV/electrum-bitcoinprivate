@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NAME_ROOT=electrum-zclassic
+NAME_ROOT=electrum-bitcoinprivate
 PYTHON_VERSION=3.5.4
 
 # These settings probably don't need any change
@@ -19,14 +19,14 @@ set -e
 mkdir -p tmp
 cd tmp
 
-for repo in electrum-zclassic electrum-locale electrum-icons; do
+for repo in electrum-bitcoinprivate electrum-locale electrum-icons; do
     if [ -d $repo ]; then
 	cd $repo
 	git pull
 	git checkout master
 	cd ..
     else
-	URL=https://github.com/ZclassicCommunity/$repo.git
+	URL=https://github.com/BTCPrivate/$repo.git
 	git clone -b master $URL $repo
     fi
 done
@@ -39,7 +39,7 @@ for i in ./locale/*; do
 done
 popd
 
-pushd electrum-zclassic
+pushd electrum-bitcoinprivate
 if [ ! -z "$1" ]; then
     git checkout $1
 fi
@@ -50,18 +50,18 @@ echo "Last commit: $VERSION"
 find -exec touch -d '2000-11-11T11:11:11+00:00' {} +
 popd
 
-rm -rf $WINEPREFIX/drive_c/electrum_zclassic
-cp -r electrum-zclassic $WINEPREFIX/drive_c/electrum_zclassic
-cp electrum-zclassic/LICENCE .
-cp -r electrum-locale/locale $WINEPREFIX/drive_c/electrum_zclassic/lib/
-cp electrum-icons/icons_rc.py $WINEPREFIX/drive_c/electrum_zclassic/gui/qt/
+rm -rf $WINEPREFIX/drive_c/electrum_bitcoinprivate
+cp -r electrum-bitcoinprivate $WINEPREFIX/drive_c/electrum_bitcoinprivate
+cp electrum-bitcoinprivate/LICENCE .
+cp -r electrum-locale/locale $WINEPREFIX/drive_c/electrum_bitcoinprivate/lib/
+cp electrum-icons/icons_rc.py $WINEPREFIX/drive_c/electrum_bitcoinprivate/gui/qt/
 
 # Install frozen dependencies
 $PYTHON -m pip install -r ../../deterministic-build/requirements.txt
 
 $PYTHON -m pip install -r ../../deterministic-build/requirements-hw.txt
 
-pushd $WINEPREFIX/drive_c/electrum_zclassic
+pushd $WINEPREFIX/drive_c/electrum_bitcoinprivate
 $PYTHON setup.py install
 popd
 

@@ -3,24 +3,24 @@ import hashlib
 import sys
 import traceback
 
-from electrum_zclassic import bitcoin
-from electrum_zclassic import constants
-from electrum_zclassic.bitcoin import (TYPE_ADDRESS, int_to_hex, var_int,
+from electrum_bitcoinprivate import bitcoin
+from electrum_bitcoinprivate import constants
+from electrum_bitcoinprivate.bitcoin import (TYPE_ADDRESS, int_to_hex, var_int,
                                    b58_address_to_hash160,
                                    hash160_to_b58_address)
-from electrum_zclassic.i18n import _
-from electrum_zclassic.plugins import BasePlugin
-from electrum_zclassic.keystore import Hardware_KeyStore
-from electrum_zclassic.transaction import Transaction
+from electrum_bitcoinprivate.i18n import _
+from electrum_bitcoinprivate.plugins import BasePlugin
+from electrum_bitcoinprivate.keystore import Hardware_KeyStore
+from electrum_bitcoinprivate.transaction import Transaction
 from ..hw_wallet import HW_PluginBase
-from electrum_zclassic.util import print_error, is_verbose, bfh, bh2u, versiontuple
+from electrum_bitcoinprivate.util import print_error, is_verbose, bfh, bh2u, versiontuple
 
 
 def setAlternateCoinVersions(self, regular, p2sh):
     apdu = [ 0xE0, 0x14, 0x01, 0x05, 0x16, 0x1C, 0xB8, 0x1C, 0xBD, 0x01, 0x08]
-    apdu.extend("ZClassic".encode())
+    apdu.extend("bitcoinprivate".encode())
     apdu.append(0x03)
-    apdu.extend("ZCL".encode())
+    apdu.extend("BTCP".encode())
     self.dongle.exchange(bytearray(apdu))
 
 try:
@@ -199,7 +199,7 @@ class Ledger_Client():
                 self.perform_hw1_preflight()
             except BTChipException as e:
                 if (e.sw == 0x6d00 or e.sw == 0x6700):
-                    raise Exception(_("Device not in ZClassic mode")) from e
+                    raise Exception(_("Device not in bitcoinprivate mode")) from e
                 raise e
             self.preflightDone = True
 

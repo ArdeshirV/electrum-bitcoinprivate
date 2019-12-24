@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- mode: python -*-
 #
-# Electrum - lightweight ZClassic client
+# Electrum - lightweight bitcoinprivate client
 # Copyright (C) 2016  The Electrum developers
 #
 # Permission is hereby granted, free of charge, to any person
@@ -24,8 +24,8 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from electrum_zclassic.plugins import BasePlugin, hook
-from electrum_zclassic.i18n import _
+from electrum_bitcoinprivate.plugins import BasePlugin, hook
+from electrum_bitcoinprivate.i18n import _
 
 
 class HW_PluginBase(BasePlugin):

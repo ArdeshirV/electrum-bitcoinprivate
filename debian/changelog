@@ -1,4 +1,4 @@
-electrum-zclassic (3.1.3~rc2-0ppa1~ubuntu18.04.1) bionic; urgency=medium
+electrum-bitcoinprivate (3.1.3~rc2-0ppa1~ubuntu18.04.1) bionic; urgency=medium
 
   * Port to ppa
 
