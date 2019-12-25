@@ -26,7 +26,7 @@ CCY_PRECISIONS = {'BHD': 3, 'BIF': 0, 'BYR': 0, 'CLF': 4, 'CLP': 0,
                   'BTC': 8}
 
 
-DEFAULT_EXCHANGE = 'BitcoinAverage'
+DEFAULT_EXCHANGE = 'CoinMarketCap'
 DEFAULT_CCY = 'USD'
 
 
